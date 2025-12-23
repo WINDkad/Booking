@@ -1,6 +1,3 @@
-from api.api_manager import ApiManager
-
-
 class TestAuthAPI:
     def test_register_user(self, api_manager, test_user):
         response = api_manager.auth_api.register_user(test_user)

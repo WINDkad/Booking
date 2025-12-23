@@ -14,7 +14,7 @@ class AuthAPI(CustomRequester):
             expected_status=expected_status
         )
 
-    def login_user(self, user_data, expected_status=201):
+    def login_user(self, user_data, expected_status=200):
         return self.send_request(
             method="POST",
             endpoint=LOGIN_ENDPOINT,
@@ -30,7 +30,6 @@ class AuthAPI(CustomRequester):
 
         response = self.login_user(login_data)
         if "accessToken" not in response:
-            raise ValueError("Token is missing"
-                             )
+            raise ValueError("Token is missing")
         token = response["accessToken"]
         self._update_session_headers(**{"Authorization": f"Bearer {token}"})
